@@ -32,8 +32,8 @@ def inplace_copy(tgt: Tensor, src: Tensor, *, auto_move_device = False):
 def inplace_lerp(tgt: Tensor, src: Tensor, weight, *, auto_move_device = False):
     
     src = src.to(tgt.device).to(tgt.dtype)
-
-    tgt.lerp_(src, weight)
+    
+    tgt.lerp_(src, weight.to(tgt.dtype))
 
 # algorithm 2 in https://arxiv.org/abs/2312.02696
 
