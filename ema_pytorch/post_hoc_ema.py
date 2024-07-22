@@ -26,13 +26,13 @@ def get_module_device(m: Module):
 
 def inplace_copy(tgt: Tensor, src: Tensor, *, auto_move_device = False):
     if auto_move_device:
-        src = src.to(tgt.device)
+        src = src.to(tgt.device).to(tgt.dtype)
 
     tgt.copy_(src)
 
 def inplace_lerp(tgt: Tensor, src: Tensor, weight, *, auto_move_device = False):
     if auto_move_device:
-        src = src.to(tgt.device)
+        src = src.to(tgt.device).to(tgt.dtype)
 
     tgt.lerp_(src, weight)
 
